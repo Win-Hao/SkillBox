@@ -1,0 +1,355 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.dark body,
+.dark {
+    color-scheme: dark;
+}
+
+
+.dark pre {
+    background: #1f2937;
+    border-color: #374151;
+    color: #e5e7eb;
+}
+
+.dark :not(pre) > code {
+    background: #374151;
+    color: #e5e7eb;
+}
+
+.dark .skeleton {
+    background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+    background-size: 800px 100%;
+}
+
+.dark .card-interactive {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2),
+                0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.dark .card-interactive:hover {
+    box-shadow: 0 0 14px rgba(217,119,87,0.4), 0 0 28px rgba(217,119,87,0.2);
+}
+
+.dark .scroll-top-btn {
+    background: rgba(31,41,55,0.85) !important;
+    color: #e5e7eb;
+    border-color: rgba(217,119,87,0.3);
+}
+
+.dark .sonner-close:hover {
+    background: hsl(0, 0%, 25%) !important;
+}
+
+pre {
+    max-width: 100%;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+    margin: 0.75rem 0;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+}
+
+code {
+    word-break: break-all;
+    font-size: 0.8125rem;
+}
+
+pre code {
+    word-break: normal;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+:not(pre) > code {
+    background: #f3f4f6;
+    border-radius: 0.25rem;
+    padding: 0.125rem 0.375rem;
+}
+
+/* Clawd idle animations (adapted from clawd-on-desk, MIT) */
+.clawd-breathe {
+    transform-origin: 7.5px 13px;
+    animation: clawd-breathe 3.2s infinite ease-in-out;
+}
+.clawd-action {
+    transform-origin: 7.5px 13px;
+    animation: clawd-action 16s infinite ease-in-out;
+}
+.clawd-eye-track {
+    animation: clawd-eye-track 16s infinite ease-in-out;
+}
+.clawd-eye-blink {
+    transform-origin: 7.5px 9px;
+    animation: clawd-eye-blink 16s infinite linear;
+}
+.clawd-arm-l {
+    transform-origin: 1px 10px;
+    animation: clawd-arm-l 16s infinite ease-in-out;
+}
+.clawd-arm-r {
+    transform-origin: 14px 10px;
+    animation: clawd-arm-r 16s infinite ease-in-out;
+}
+
+@keyframes clawd-breathe {
+    0%, 100% { transform: scale(1, 1) translate(0, 0); }
+    50% { transform: scale(1.02, 0.98) translate(0, 0.5px); }
+}
+@keyframes clawd-action {
+    0%, 8%, 26%, 38%, 55%, 80%, 100% { transform: scale(1,1) translate(0,0); }
+    12%, 22% { transform: scale(1,1) translate(1px, 0); }
+    42%, 50% { transform: scale(1,1) translate(-1px, 0); }
+    30%, 36% { transform: scale(1,1) translate(0.5px, 0); }
+    60% { transform: scale(0.95, 1.05) translate(0, -1px); }
+    65% { transform: scale(0.9, 1.1) translate(0, -2px); }
+    72% { transform: scale(1.05, 0.95) translate(0, 1px); }
+    76% { transform: scale(1,1) translate(0, 0); }
+}
+@keyframes clawd-eye-track {
+    0%, 10%, 25%, 38%, 52%, 58%, 80%, 100% { transform: translate(0, 0); }
+    12%, 22% { transform: translate(3px, 0); }
+    42%, 50% { transform: translate(-3px, 0); }
+    60%, 75% { transform: translate(0, -1px); }
+}
+@keyframes clawd-eye-blink {
+    0%, 3%, 7%, 18%, 22%, 43%, 47%, 56%, 83%, 87%, 100% { transform: scaleY(1); }
+    5%, 20%, 45%, 85% { transform: scaleY(0.1); }
+    60%, 62%, 72% { transform: scaleY(0.1); }
+    75% { transform: scaleY(1); }
+}
+@keyframes clawd-arm-l {
+    0%, 28% { transform: translate(0,0) rotate(0deg); }
+    30% { transform: translate(1px, -3px) rotate(15deg); }
+    31% { transform: translate(1.5px, -4px) rotate(35deg); }
+    32% { transform: translate(0.5px, -2.5px) rotate(0deg); }
+    33% { transform: translate(1.5px, -4px) rotate(35deg); }
+    34% { transform: translate(0.5px, -2.5px) rotate(0deg); }
+    35% { transform: translate(1.5px, -4px) rotate(35deg); }
+    36% { transform: translate(0.5px, -2.5px) rotate(0deg); }
+    38%, 58% { transform: translate(0,0) rotate(0deg); }
+    62% { transform: translate(-1px, -2px) rotate(45deg); }
+    65% { transform: translate(-2px, -3px) rotate(80deg); }
+    72% { transform: translate(0, 1px) rotate(-15deg); }
+    76%, 100% { transform: translate(0,0) rotate(0deg); }
+}
+@keyframes clawd-arm-r {
+    0%, 58% { transform: translate(0,0) rotate(0deg); }
+    62% { transform: translate(1px, -2px) rotate(-45deg); }
+    65% { transform: translate(2px, -3px) rotate(-80deg); }
+    72% { transform: translate(0, 1px) rotate(15deg); }
+    76%, 100% { transform: translate(0,0) rotate(0deg); }
+}
+
+/* SVG stroke drawing animation (Lucide Icons) */
+@keyframes stroke-draw {
+    from {
+        stroke-dashoffset: 100;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+svg.icon-animated path,
+svg.icon-animated circle,
+svg.icon-animated rect,
+svg.icon-animated polyline,
+svg.icon-animated line {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: stroke-draw 1.5s ease forwards;
+}
+
+@keyframes shimmer {
+    0% { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+}
+
+.skeleton {
+    background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+    background-size: 800px 100%;
+    animation: shimmer 1.5s infinite ease-in-out;
+    border-radius: 0.25rem;
+}
+
+/* Drawer slide-in / slide-out */
+@keyframes drawer-slide-in {
+    from { transform: translateX(100%); }
+    to   { transform: translateX(0); }
+}
+@keyframes drawer-slide-out {
+    from { transform: translateX(0); }
+    to   { transform: translateX(100%); }
+}
+@keyframes backdrop-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.drawer-enter {
+    animation: drawer-slide-in 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.drawer-exit {
+    animation: drawer-slide-out 0.28s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+.backdrop-enter {
+    animation: backdrop-fade-in 0.24s ease both;
+}
+@keyframes backdrop-fade-out {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+.backdrop-exit {
+    animation: backdrop-fade-out 0.24s ease both;
+    pointer-events: none;
+}
+
+/* Card hover effect */
+.card-interactive {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04),
+                0 1px 2px rgba(0, 0, 0, 0.02);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.4s ease,
+                border-color 0.3s ease;
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.card-interactive:hover {
+    transform: scale(1.02);
+    border-color: #D97757;
+    box-shadow: 0 0 14px rgba(217,119,87,0.3), 0 0 28px rgba(217,119,87,0.15);
+}
+.card-interactive:active:not(:has(.card-toggle:active)) {
+    transform: scale(1.00);
+    border-color: #C4684B;
+    box-shadow: 0 0 6px rgba(217,119,87,0.15);
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+}
+
+
+/* Card dismiss: slide left + fade out (no height collapse to avoid layout shift) */
+@keyframes card-dismiss {
+    from {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-24px) scale(0.97);
+    }
+}
+
+.card-dismissing {
+    animation: card-dismiss 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    pointer-events: none;
+}
+
+/* Page view transition */
+@keyframes page-enter {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.page-transition {
+    animation: page-enter 0.4s cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+/* Scroll-to-top button fade+slide */
+.scroll-top-wrap {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.scroll-top-wrap.scroll-top-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+.scroll-top-wrap.scroll-top-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Dialog scale-in / scale-out */
+@keyframes dialog-scale-in {
+    from { transform: scale(0.96); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+@keyframes dialog-scale-out {
+    from { transform: scale(1); opacity: 1; }
+    to   { transform: scale(0.96); opacity: 0; }
+}
+.dialog-enter {
+    animation: dialog-scale-in 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.dialog-exit {
+    animation: dialog-scale-out 0.32s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Step content fade-in (upload ↔ preview) */
+@keyframes step-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+.step-enter {
+    animation: step-fade-in 0.35s ease both;
+}
+
+/* Backdrop slow exit */
+.backdrop-exit-slow {
+    animation: backdrop-fade-out 0.32s ease both;
+    pointer-events: none;
+}
+
+/* Sonner-style toast */
+@keyframes sonner-slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(-100%) scale(1);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+@keyframes sonner-slide-out {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-100%) scale(1);
+    }
+}
+.sonner-enter {
+    animation: sonner-slide-in 0.35s cubic-bezier(0.21, 1.02, 0.73, 1) both;
+}
+.sonner-exit {
+    animation: sonner-slide-out 0.25s cubic-bezier(0.4, 0, 0.2, 1) both;
+    pointer-events: none !important;
+}
+.sonner-toast:hover .sonner-close {
+    opacity: 1 !important;
+}
+.sonner-close:hover {
+    background: hsl(0, 0%, 95%) !important;
+}

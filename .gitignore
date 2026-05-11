@@ -1,0 +1,8 @@
+/target
+/dist
+/node_modules
+/icons/*.png
+/icons/*.iconset
+.DS_Store
+*.swp
+*.swo

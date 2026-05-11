@@ -1,0 +1,6 @@
+[application]
+name = "SkillBox"
+default_platform = "desktop"
+
+[web.resource.dev]
+style = ["assets/main.css"]
