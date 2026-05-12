@@ -43,26 +43,36 @@ pub fn Layout() -> Element {
     });
 
     rsx! {
-        style { ".scroll-top-btn {{ transition: border-color 0.2s ease, box-shadow 0.2s ease; }} .scroll-top-btn:hover {{ border-color: rgba(217,119,87,0.55); box-shadow: 0 4px 12px rgba(217,119,87,0.15); }} .scroll-top-btn .arrow-up {{ transition: transform 0.25s ease; }} .scroll-top-btn:hover .arrow-up {{ transform: translateY(-2px); }}" }
+        style { "
+            .scroll-top-btn {{ transition: border-color 0.2s ease, box-shadow 0.2s ease; }}
+            .scroll-top-btn:hover {{ border-color: rgba(217,119,87,0.55); box-shadow: 0 4px 12px rgba(217,119,87,0.15); }}
+            .scroll-top-btn .arrow-up {{ transition: transform 0.25s ease; }}
+            .scroll-top-btn:hover .arrow-up {{ transform: translateY(-2px); }}
+            @media (min-width: 1024px) {{
+                .sb-overlay {{ display: none !important; }}
+                .sb-sidebar {{ position: static !important; z-index: auto !important; transform: none !important; }}
+                .sb-hamburger {{ display: none !important; }}
+            }}
+        " }
         div {
             class: "flex h-screen bg-gray-50 dark:bg-gray-900 relative",
 
             // Mobile sidebar overlay
             div {
                 class: if *sidebar_open.read() {
-                    "fixed inset-0 z-30 bg-black/30 lg:hidden opacity-100 transition-opacity duration-300 ease-in-out"
+                    "fixed inset-0 z-30 bg-black/30 sb-overlay opacity-100 transition-opacity duration-300 ease-in-out"
                 } else {
-                    "fixed inset-0 z-30 bg-black/30 lg:hidden opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out"
+                    "fixed inset-0 z-30 bg-black/30 sb-overlay opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out"
                 },
                 onclick: move |_| sidebar_open.set(false),
             }
 
-            // Sidebar — hidden on mobile, slide-in via toggle
+            // Sidebar
             div {
                 class: if *sidebar_open.read() {
-                    "fixed inset-y-0 left-0 z-40 w-56 lg:static lg:z-auto transition-transform duration-200"
+                    "fixed inset-y-0 left-0 z-40 w-56 sb-sidebar transition-transform duration-200"
                 } else {
-                    "fixed inset-y-0 left-0 z-40 w-56 -translate-x-full lg:translate-x-0 lg:static lg:z-auto transition-transform duration-200"
+                    "fixed inset-y-0 left-0 z-40 w-56 -translate-x-full sb-sidebar transition-transform duration-200"
                 },
                 Sidebar {
                     on_navigate: move |_| sidebar_open.set(false),
@@ -74,7 +84,7 @@ pub fn Layout() -> Element {
 
                 // Mobile hamburger
                 div {
-                    class: "lg:hidden sticky top-0 z-20 bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 px-3 py-2",
+                    class: "sb-hamburger sticky top-0 z-20 bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 px-3 py-2",
                     button {
                         class: "p-1.5 rounded-lg hover:bg-gray-200/60 dark:hover:bg-gray-700/60 transition-colors",
                         onclick: move |_| sidebar_open.toggle(),

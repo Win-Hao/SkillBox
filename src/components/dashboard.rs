@@ -57,7 +57,7 @@ pub fn DashboardView() -> Element {
 
             // Row 1: Stat cards
             div {
-                class: "grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-5",
+                class: "grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-5 db-stat-grid",
                 StatCard { value: "{total}", label: t("dashboard.total_skills", locale).to_string(), icon_bg: "bg-gray-100 dark:bg-gray-700", icon_color: "text-gray-500 dark:text-gray-400", icon: "M4 6h16M4 12h16M4 18h16" }
                 StatCard { value: "{enabled}", label: t("dashboard.enabled", locale).to_string(), icon_bg: "bg-green-50 dark:bg-green-900/30", icon_color: "text-green-500", icon: "M5 13l4 4L19 7" }
                 StatCard { value: "{disabled}", label: t("dashboard.disabled", locale).to_string(), icon_bg: "bg-red-50 dark:bg-red-900/30", icon_color: "text-red-400", icon: "M18.36 6.64A9 9 0 0 1 20.77 12 9 9 0 1 1 5.64 6.64M12 2v10" }
@@ -85,7 +85,7 @@ pub fn DashboardView() -> Element {
 
             // Row 3: Three columns
             div {
-                class: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mt-5",
+                class: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mt-5 db-panel-grid",
 
                 // Col 1: Source breakdown
                 MacPanel { title: t("dashboard.panel_source", locale).to_string(),

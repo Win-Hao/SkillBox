@@ -49,6 +49,22 @@ html.dark #splash{background:#111827}
 @keyframes bounce{from{opacity:.3;transform:translateY(0)}to{opacity:1;transform:translateY(-8px)}}
 #main{opacity:0;transition:opacity .2s ease .05s}
 #main.ready{opacity:1}
+/* WebView2 compat: lightningcss rewrites min-width to range syntax (width>=X)
+   which older WebView2/Chromium versions do not support. These rules use
+   the legacy syntax as a fallback so responsive layout always works. */
+@media (min-width:1024px){
+  .sb-overlay{display:none!important}
+  .sb-sidebar{position:static!important;z-index:auto!important;transform:none!important}
+  .sb-hamburger{display:none!important}
+  .db-stat-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+  .db-panel-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
+@media (min-width:768px){
+  .db-panel-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media (min-width:640px){
+  .db-stat-grid,.db-panel-grid{gap:1rem!important}
+}
 </style>
 <script>if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark');document.body.classList.add('dark')}</script>
 <div id="splash"><div class="dot-group"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>"#.into())
