@@ -3,12 +3,13 @@ use dioxus::prelude::*;
 
 #[component]
 pub fn ClaudeMascot(#[props(default = "w-8 h-8")] class: &'static str) -> Element {
-    // Pixel-accurate Clawd from clawd-on-desk (MIT), with idle animations
     let c = "#D97757";
     let e = "#000000";
     rsx! {
         svg {
             class: "{class}",
+            width: "36",
+            height: "36",
             view_box: "0 5 15 11",
             shape_rendering: "crispEdges",
             overflow: "visible",

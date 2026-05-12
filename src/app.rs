@@ -123,10 +123,7 @@ pub fn App() -> Element {
     let locale = settings.read().locale;
 
     rsx! {
-        document::Link {
-            rel: "stylesheet",
-            href: asset!("/assets/main.css"),
-        }
+        style { {include_str!("../assets/main.css")} }
         Router::<Route> {}
         if *show_welcome.read() {
             div {
